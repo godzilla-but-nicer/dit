@@ -246,7 +246,7 @@ class BasePID(metaclass=ABCMeta):
         for node in reversed(list(self._lattice)):
             if node not in self._pis:
                 try:
-                    self._pis[node] = self._reds[node] - sum(self._pis[n] for n in self._lattice.descendants(node))
+                    self._pis[node] = self._reds[node] - sum(self._pis[n] for n in nx.descendants(self._lattice, node))
                 except KeyError:
                     pass
 
